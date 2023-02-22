@@ -1,0 +1,98 @@
+doctype html
+// Mirrored from softalab.com/CreditFirm/CreditFirm-v1/sign-up.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 09 Feb 2023 08:57:37 GMT
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible', content='ie=edge')
+  title CreditFirm Bank
+  link(rel='shortcut icon', href='assets/images/fav.png', type='image/x-icon')
+  link(rel='stylesheet', href='assets/css/bootstrap.min.css')
+  link(rel='stylesheet', href='assets/css/fontawesome.min.css')
+  link(rel='stylesheet', href='assets/css/jquery-ui.css')
+  link(rel='stylesheet', href='assets/css/plugin/nice-select.css')
+  link(rel='stylesheet', href='assets/css/plugin/magnific-popup.css')
+  link(rel='stylesheet', href='assets/css/plugin/slick.css')
+  link(rel='stylesheet', href='assets/css/arafat-font.css')
+  link(rel='stylesheet', href='assets/css/plugin/animate.css')
+  link(rel='stylesheet', href='assets/css/style.css')
+// start preloader
+#preloader.preloader
+// end preloader
+// Scroll To Top Start
+a.scrollToTop(href='javascript:void(0)')
+  i.fas.fa-angle-double-up
+// Scroll To Top End
+// header-section start
+header.header-section
+  .overlay
+    .container
+      .row.d-flex.header-area
+        nav.navbar.navbar-expand-lg.navbar-light
+          a.navbar-brand(href='index.html')
+            span(style='font-size: 45px; font-weight: bold;') Credit 
+            span(style='color: #4743c9; font-size: 45px; font-weight: bold;') Firm
+          button.navbar-toggler.collapsed(type='button', data-bs-toggle='collapse', data-bs-target='#navbar-content')
+            i.fas.fa-bars
+          #navbar-content.collapse.navbar-collapse.justify-content-end
+            //- ul.navbar-nav.mr-auto.mb-2.mb-lg-0
+            //-   li.nav-item.dropdown.main-navbar
+            //-     a.nav-link.dropdown-toggle(href='javascript:void(0)', data-bs-toggle='dropdown', data-bs-auto-close='outside') Help
+            //-     ul.dropdown-menu.main-menu.shadow
+            //-       li
+            //-         a.nav-link(href='help-center.html') Help Center
+            //-       li
+            //-         a.nav-link(href='help-center-category.html') Help Category
+            .right-area.header-action.d-flex.align-items-center.max-un
+              a.login(href='/login') Login
+              a.cmn-btn(href='/signup')
+                | Sign Up
+                i.icon-d-right-arrow-2
+// header-section end
+// Login Reg start
+section.login-reg
+  .overlay.pt-120
+    .container
+      .row.align-items-center.justify-content-center
+        .col-xl-6.order-xl-0.order-1
+          .sec-img.d-rtl
+            img.max-un(src='assets/images/login-reg-bg.png', alt='image')
+        .col-xl-5
+          .section-text.text-center
+            h5.sub-title Account
+            h2.title Welcome to CreditFirm
+            p.dont-acc
+              | Already have an account? 
+              a(href='login.html') Login
+          span.sign-error
+          form.form--signup(action='#')
+            .row
+              .col-12
+                .single-input
+                  label(for='login') Your Login
+                  input#login(type='text', placeholder='Enter Your Login')
+                .single-input
+                  label(for='email') Your Email
+                  input#email(type='text', placeholder='Enter Your Email')
+                .single-input
+                  label(for='password') Your Password
+                  input#password.san(type='password', placeholder='Enter Your Password')
+                .single-input
+                  label(for='passwordConfirm') Confirm Password
+                  input#passwordConfirm.san(type='password', placeholder='Confirm Password')
+                button.cmn-btn.w-100 Submit
+// Login Reg end
+// ==================================================================
+script(src='assets/js/jquery.min.js')
+script(src='assets/js/jquery-ui.js')
+script(src='assets/js/bootstrap.min.js')
+script(src='assets/js/fontawesome.js')
+script(src='assets/js/plugin/slick.js')
+script(src='assets/js/plugin/jquery.nice-select.min.js')
+script(src='assets/js/plugin/counter.js')
+script(src='assets/js/plugin/waypoint.min.js')
+script(src='assets/js/plugin/jquery.magnific-popup.min.js')
+script(src='assets/js/plugin/wow.min.js')
+script(src='assets/js/plugin/plugin.js')
+script(src='assets/js/main.js')
+script(src='/js/bundle.js')

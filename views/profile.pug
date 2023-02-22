@@ -1,0 +1,328 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible', content='IE=edge')
+  meta(name='viewport', content='width=device-width, initial-scale=1')
+  // PAGE TITLE HERE
+  title CreditFirm Bank | #{user.role} profile
+  // FAVICONS ICON
+  link(rel='shortcut icon', type='image/png', href='images/favicon.png')
+  link(href='vendor/jquery-nice-select/css/nice-select.css', rel='stylesheet')
+  link(href='vendor/lightgallery/css/lightgallery.min.css', rel='stylesheet')
+  link(href='vendor/jquery-autocomplete/jquery-ui.css', rel='stylesheet')
+  link(href='vendor/sweetalert2/dist/sweetalert2.min.css', rel='stylesheet')
+  link(href='css/style.css', rel='stylesheet')
+//
+  *******************
+  Preloader start
+  ********************
+#preloader
+  .inner
+    span Loading 
+    .loading
+//
+  *******************
+  Preloader end
+  ********************
+//
+  **********************************
+  Main wrapper start
+  ***********************************
+#main-wrapper
+  .animation
+    span.circle.one
+    span.circle.two
+    span.circle.three
+    span.circle.four
+    span.line-1
+      svg(width='1920', height='450', viewbox='0 0 1920 450', fill='none', xmlns='http://www.w3.org/2000/svg')
+        path(opacity='0.3', d='M0 155L95.4613 293.923C106.459 309.928 131.116 305.943 136.512 287.289L209.86 33.7127C215.892 12.8576 244.803 11.2033 253.175 31.2341L344.838 250.546C352.224 268.217 376.708 269.648 386.102 252.958L519.839 15.3693C529.061 -1.01332 552.975 -0.0134089 560.797 17.0818L716.503 357.389C724.454 374.766 748.899 375.43 757.782 358.51L902.518 82.8223C911.524 65.6685 936.406 66.653 944.028 84.4648L1093.06 432.731C1101.14 451.601 1128.01 451.247 1135.58 432.172L1291.33 39.9854C1298.27 22.5135 1322.1 20.2931 1332.14 36.1824L1473.74 260.126C1482.47 273.922 1502.38 274.494 1511.88 261.221L1667.88 43.3025C1678.17 28.9257 1700.16 31.0533 1707.5 47.1365L1844.91 348.06C1853.69 367.287 1881.58 365.486 1887.81 345.29L1970 79', stroke='url(#paint0_linear_332_3757)', stroke-opacity='0.4', stroke-width='6', stroke-linecap='round')
+        defs
+          lineargradient#paint0_linear_332_3757(x1='1946.24', y1='352.062', x2='-1.52124', y2='345.607', gradientunits='userSpaceOnUse')
+            stop(offset='0', stop-color='#6E4AFF')
+            stop(offset='0.479167', stop-color='#E43BFF')
+            stop(offset='1', stop-color='#6E4AFF')
+    span.line-2
+      svg(width='1920', height='459', viewbox='0 0 1920 459', fill='none', xmlns='http://www.w3.org/2000/svg')
+        path(d='M0 89L103.191 296.201C112.034 313.958 137.703 312.941 145.114 294.54L224.847 96.5574C232.264 78.141 257.962 77.1423 266.786 94.9275L352.649 267.995C360.863 284.553 384.264 285.148 393.31 269.03L516.226 50.0159C525.164 34.0902 548.205 34.4325 556.666 50.6167L713.497 350.608C721.71 366.318 743.86 367.222 753.326 352.234L901.462 117.684C911.188 102.286 934.102 103.763 941.771 120.282L1091.14 442.062C1099.38 459.816 1124.62 459.817 1132.86 442.064L1303.17 75.2544C1310.64 59.1685 1332.73 57.2308 1342.89 71.7713L1469.94 253.703C1479.15 266.893 1498.71 266.794 1507.78 253.511L1671.82 13.4627C1681.74 -1.05968 1703.63 0.478486 1711.42 16.2459L1844.42 285.267C1853.64 303.905 1880.89 301.723 1887.02 281.857L1970 13', stroke='url(#paint0_linear_332_3758)', stroke-opacity='0.4', stroke-width='6', stroke-linecap='round')
+        defs
+          lineargradient#paint0_linear_332_3758(x1='1946.24', y1='286.062', x2='-1.52105', y2='279.607', gradientunits='userSpaceOnUse')
+            stop(offset='0', stop-color='#6E4AFF')
+            stop(offset='0.479167', stop-color='#E43BFF')
+            stop(offset='1', stop-color='#6E4AFF')
+  //
+    **********************************
+    Nav header start
+    ***********************************
+  .nav-header
+    
+    .nav-control
+      .hamburger
+        span.line
+        span.line
+        span.line
+        svg(width='24', height='24', viewbox='0 0 24 24', fill='none', xmlns='http://www.w3.org/2000/svg')
+          path(opacity='0.4', d='M16.7548 0.333313H20.7051C22.341 0.333313 23.6667 1.67014 23.6667 3.31994V7.30359C23.6667 8.95339 22.341 10.2902 20.7051 10.2902H16.7548C15.1188 10.2902 13.7932 8.95339 13.7932 7.30359V3.31994C13.7932 1.67014 15.1188 0.333313 16.7548 0.333313Z', fill='white')
+          path(fill-rule='evenodd', clip-rule='evenodd', d='M3.29492 0.333313H7.24522C8.8812 0.333313 10.2068 1.67014 10.2068 3.31994V7.30359C10.2068 8.95339 8.8812 10.2902 7.24522 10.2902H3.29492C1.65894 10.2902 0.333313 8.95339 0.333313 7.30359V3.31994C0.333313 1.67014 1.65894 0.333313 3.29492 0.333313ZM3.29492 13.7097H7.24522C8.8812 13.7097 10.2068 15.0466 10.2068 16.6964V20.68C10.2068 22.3287 8.8812 23.6666 7.24522 23.6666H3.29492C1.65894 23.6666 0.333313 22.3287 0.333313 20.68V16.6964C0.333313 15.0466 1.65894 13.7097 3.29492 13.7097ZM20.705 13.7097H16.7547C15.1188 13.7097 13.7931 15.0466 13.7931 16.6964V20.68C13.7931 22.3287 15.1188 23.6666 16.7547 23.6666H20.705C22.341 23.6666 23.6666 22.3287 23.6666 20.68V16.6964C23.6666 15.0466 22.341 13.7097 20.705 13.7097Z', fill='white')
+  //
+    **********************************
+    Nav header end
+    ***********************************
+  //
+    **********************************
+    Chat box start
+    ***********************************
+  .chatbox
+    .chatbox-close
+    .custom-tab-1
+      ul.nav.nav-tabs
+        li.nav-item
+          a.nav-link(data-bs-toggle='tab', href='#notes') Notes
+        li.nav-item
+          a.nav-link(data-bs-toggle='tab', href='#alerts') Alerts
+        li.nav-item
+          a.nav-link.active(data-bs-toggle='tab', href='#chat') Chat
+      .tab-content
+        #chat.tab-pane.fade.active.show(role='tabpanel')
+          .card.mb-sm-3.mb-md-0.contacts_card.dz-chat-user-box
+            .card-header.chat-list-header.text-center
+              a.add(href='#', data-bs-toggle='modal', data-bs-target='#exampleModal')
+                svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='18px', height='18px', viewbox='0 0 24 24', version='1.1')
+                  g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+                    rect(fill='#ffffff', x='4', y='11', width='16', height='2', rx='1')
+                    rect(fill='#ffffff', opacity='0.3', transform='translate(12.000000, 12.000000) rotate(-270.000000) translate(-12.000000, -12.000000) ', x='4', y='11', width='16', height='2', rx='1')
+              div
+                h6.mb-1 Chat List
+                p.mb-0 Show All
+              a(href='javascript:void(0);')
+                svg(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', width='18px', height='18px', viewbox='0 0 24 24', version='1.1')
+                  g(stroke='none', stroke-width='1', fill='none', fill-rule='evenodd')
+                    rect(x='0', y='0', width='24', height='24')
+                    circle(fill='#000000', cx='5', cy='12', r='2')
+                    circle(fill='#000000', cx='12', cy='12', r='2')
+                    circle(fill='#000000', cx='19', cy='12', r='2')
+  //
+    **********************************
+    Chat box End
+    ***********************************
+  //
+    **********************************
+    Header start
+    ***********************************
+  .header
+    .header-content
+      nav.navbar.navbar-expand
+        .collapse.navbar-collapse.justify-content-between
+          .header-left
+            .dashboard_bar CreditFirm Bank | #{user.role} Profile
+          .dropdown.header-profile2
+            a.nav-link.user-profile(href='javascript:void(0);', role='button', data-bs-toggle='dropdown')
+              .header-info2.d-flex.align-items-center
+                img(src=`img/users/${user.photo}`)
+                .d-flex.align-items-center.sidebar-info
+                  .user-info
+                    span.font-w500.d-block.fs-5.text-white= user.login
+                    small.text-end.font-w400= user.role
+                  svg(width='14', height='8', viewbox='0 0 14 8', fill='none', xmlns='http://www.w3.org/2000/svg')
+                    path(d='M12.8334 1.08331L7.00002 6.91665L1.16669 1.08331', stroke='#FFFF', stroke-width='1.5', stroke-linecap='round', stroke-linejoin='round')
+            .dropdown-menu.profile.dropdown-menu-end
+              a.dropdown-item.ai-icon(href='/profile')
+                svg.text-primary(xmlns='http://www.w3.org/2000/svg', width='18', height='18', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                  path(d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2')
+                  circle(cx='12', cy='7', r='4')
+                span.ms-2#userId(userId=`${user.id}`) Profile 
+              a.dropdown-item.ai-icon
+                svg.text-danger(xmlns='http://www.w3.org/2000/svg', width='18', height='18', viewbox='0 0 24 24', fill='none', stroke='currentColor', stroke-width='2', stroke-linecap='round', stroke-linejoin='round')
+                  path(d='M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4')
+                  polyline(points='16 17 21 12 16 7')
+                  line(x1='21', y1='12', x2='9', y2='12')
+                span.ms-2.nav__el--logout(style='cursor:pointer;') Logout 
+  .alert.alert-primary.alert-dismissible.fade.show.alert-danger(style='z-index:999; display:none;')
+      button.btn-close(type='button', data-bs-dismiss='alert', aria-label='btn-close')
+    
+  //
+    **********************************
+    Header end ti-comment-alt
+    ***********************************
+  //
+    **********************************
+    Sidebar start
+    ***********************************
+  .dlabnav
+    .dlabnav-scroll
+      ul#menu.metismenu
+        li
+          a.has-arrow(href='javascript:void()', aria-expanded='false')
+            .menu-icon
+              svg(width='24', height='24', viewbox='0 0 24 24', fill='none', xmlns='http://www.w3.org/2000/svg')
+                g#IconlyHome
+                  g#Home
+                    path#Home_2(d='M9.13478 20.7733V17.7156C9.13478 16.9351 9.77217 16.3023 10.5584 16.3023H13.4326C13.8102 16.3023 14.1723 16.4512 14.4393 16.7163C14.7063 16.9813 14.8563 17.3408 14.8563 17.7156V20.7733C14.8539 21.0978 14.9821 21.4099 15.2124 21.6402C15.4427 21.8705 15.7561 22 16.0829 22H18.0438C18.9596 22.0023 19.8388 21.6428 20.4872 21.0008C21.1356 20.3588 21.5 19.487 21.5 18.5778V9.86686C21.5 9.13246 21.1721 8.43584 20.6046 7.96467L13.934 2.67587C12.7737 1.74856 11.1111 1.7785 9.98539 2.74698L3.46701 7.96467C2.87274 8.42195 2.51755 9.12064 2.5 9.86686V18.5689C2.5 20.4639 4.04738 22 5.95617 22H7.87229C8.55123 22 9.103 21.4562 9.10792 20.7822L9.13478 20.7733Z', fill='#130F26')
+            span.nav-text My profile
+          ul(aria-expanded='false')
+            li
+              a(href='/dashboard') Dashboard
+            li
+              a(href='/loan-apply') Apply For Loan
+            li
+              a(href='/order-card') Order Credit Card
+            li
+              a(href='/bill') Bill Payment
+            li
+              a(href='/transaction-history') Transaction History
+            li
+              a(style='cursor:pointer;').nav__el--logout Logout
+  //
+    **********************************
+    Sidebar end
+    ***********************************
+  //
+    **********************************
+    Content body start
+    ***********************************
+  .content-body
+    .container-fluid
+      .row.page-titles
+        ol.breadcrumb
+          li.breadcrumb-item
+            span My Profile
+      // row
+      .row
+        .col-lg-12
+          .profile.card.card-body.px-3.pt-3.pb-0
+            .profile-head
+              .photo-content
+                .cover-photo.rounded
+              .profile-info
+                .profile-photo
+                  img.img-fluid.rounded-circle(src=`img/users/${user.photo}`, alt='')
+                .profile-details
+                  .profile-name.px-3.pt-2
+                    h4.text-white.mb-0= user.login
+                    p=user.role
+                  .profile-email.px-2.pt-2
+                    h4.mb-0=user.email
+                    p Email
+      .row
+        .col-xl-4
+          .row
+            .col-xl-12
+              .card
+                .card-body
+                  .profile-statistics
+                    .text-center
+                      .row
+                      .mt-4
+                        a.btn.btn-primary.mb-1.btn-sm(data-bs-toggle='modal', data-bs-target='#updateProfile') Edit Profile
+                        a.btn.btn-primary.mb-1.btn-sm(data-bs-toggle='modal', data-bs-target='#changePassword') Change password
+                        //- button.btn.btn-success.btn.sweet-success
+                        //-   | Sweet Success
+                        //- button.btn.btn-danger.btn.sweet-wrong
+                        //-   | Sweet Wrong
+                    // Modal
+                    #updateProfile.modal.fade
+                      .modal-dialog.modal-dialog-centered(role='document')
+                        .modal-content
+                          .modal-header
+                            h5.modal-title Edit Profile
+                            button.btn-close(type='button', data-bs-dismiss='modal')
+                          .modal-body
+                            form.comment-form.form-user-update
+                              .row
+                                .col-lg-6
+                                  .mb-3
+                                    label.text-white.font-w600.form-label
+                                      | Login
+                                      span.required *
+                                    input.form-control#login(type='text', value=`${user.login}`, name='Author', placeholder='Login')
+                                .col-lg-6
+                                  .mb-3
+                                    label.text-white.font-w600.form-label
+                                      | Email
+                                      span.required *
+                                    input.form-control#email(value=`${user.email}`, type='text')
+                                .col-lg-6
+                                  .mb-3
+                                    label.text-white.font-w600.form-label
+                                      | Change Profile Picture
+                                      span.required *
+                                    input.form__upload.photo(type='file', accept='image/*', id='photo', name='photo')
+                                .col-lg-12
+                                  .mb-3.mb-0
+                                    input.submit.btn.btn-primary.btn-sm(type='submit', value='Update Profile', name='submit')
+                    // change password modal
+                    #changePassword.modal.fade
+                      .modal-dialog.modal-dialog-centered(role='document')
+                        .modal-content
+                          .modal-header
+                            h5.modal-title Change password
+                            button.btn-close(type='button', data-bs-dismiss='modal')
+                          .modal-body
+                            form.comment-form#form-user-password
+                              .row
+                                .col-lg-6
+                                  .mb-3
+                                    label.text-white.font-w600.form-label
+                                      | Enter Current password
+                                      span.required *
+                                    input.form-control#password-current(type='password', placeholder='Current password')
+                                .col-lg-6
+                                  .mb-3
+                                    label.text-white.font-w600.form-label
+                                      | Enter new Password
+                                      span.required *
+                                    input.form-control#password(type='password', placeholder='New Password')
+                                .col-lg-6
+                                  .mb-3
+                                    label.text-white.font-w600.form-label
+                                      | Confirm new password
+                                      span.required *
+                                    .input-group.transparent-append
+                                      span.input-group-text
+                                        i.fa.fa-lock
+                                      input#dz-password.form-control.password-confirm(type='password', placeholder='Choose a safe one..')
+                                      span.input-group-text.show-pass
+                                        i.fa.fa-eye-slash
+                                        i.fa.fa-eye
+                                .col-lg-12
+                                  .mb-3.mb-0
+                                    button.submit.btn.btn-primary.btn-sm.button--save-password
+                                      | Update Password
+    .swal2-container.swal2-center.swal2-fade.swal2-shown#popSuccess(style='overflow-y: auto; display:none;')
+      .swal2-popup.swal2-modal.swal2-show(aria-labelledby='swal2-title', aria-describedby='swal2-content', tabindex='-1', role='dialog', aria-live='assertive', aria-modal='true', style='display: flex')
+        .swal2-header
+          ul.swal2-progresssteps(style='display: none')
+          .swal2-icon.swal2-error(style='display: none')
+            span.swal2-x-mark
+              span.swal2-x-mark-line-left
+              span.swal2-x-mark-line-right
+          .swal2-icon.swal2-question(style='display: none')
+            span.swal2-icon-text ?
+          .swal2-icon.swal2-warning(style='display: none')
+            span.swal2-icon-text !
+          .swal2-icon.swal2-info(style='display: none')
+            span.swal2-icon-text i
+          .swal2-icon.swal2-success.swal2-animate-success-icon(style='display: flex')
+            .swal2-success-circular-line-left(style='background-color: rgb(49, 24, 152)')
+            span.swal2-success-line-tip
+            span.swal2-success-line-long
+            .swal2-success-ring
+            .swal2-success-fix(style='background-color: rgb(49, 24, 152)')
+            .swal2-success-circular-line-right(style='background-color: rgb(49, 24, 152)')
+          img.swal2-image(style='display: none')
+          h2#swal2-title.swal2-title(style='display: flex')
+            | Hey, Good job !!
+
+script(src='vendor/global/global.min.js')
+script(src='vendor/sweetalert2/dist/sweetalert2.min.js')
+script(src='jss/plugins-init/sweetalert.init.js')
+script(src='vendor/jquery-nice-select/js/jquery.nice-select.min.js')
+script(src='vendor/jquery-autocomplete/jquery-ui.js')
+script(src='vendor/bootstrap-select/dist/js/bootstrap-select.min.js')
+script(src='vendor/chart.js/Chart.bundle.min.js')
+script(src='vendor/lightgallery/js/lightgallery-all.min.js')
+script(src='jss/custom.min.js')
+script(src='jss/dlabnav-init.js')
+script(src='jss/demo.js')
+script(src='jss/styleSwitcher.js')
+script(src='/js/bundle.js')

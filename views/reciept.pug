@@ -1,0 +1,129 @@
+head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(href='https://fonts.googleapis.com/css2?family=Gloock&family=Raleway:wght@500&display=swap', rel='stylesheet')
+    title Document
+    style.
+      *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      }
+      body{
+      margin: 0;
+      background-color: #cccccc;
+      }
+      table{
+      border-spacing: 0;
+      }
+      td{
+      padding: 0;
+      }
+      img{
+      border: 0;
+      }
+      .wrapper{
+      width: 100%;
+      table-layout: fixed;
+      background-color: #cccccc;
+      padding-bottom: 60px;
+      }
+      .main{
+      background-color: #ffffff;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      border-spacing: 0;
+      font-family: system-ui;
+      color: #171a1b;
+      }
+      .two-columns{
+      display: flex;
+      justify-content: space-between;
+      padding: 25px 20px;
+      border-bottom: 2px solid #f3cafd;
+      }
+      h3{
+      color: #311893;
+      font-family: 'Raleway', sans-serif;
+      }
+body
+    center.wrapper
+      table.main(width='100%')
+        tbody
+          tr
+            td(height='8', style='background: #171a1b;')
+          tr
+            td(style='padding-bottom:20px;')
+              table(width='100%')
+                tbody
+                  tr
+                    td.two-columns
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(style="font-family: 'Gloock', serif;") CREDIT FIRM BANK
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h4
+                                a Transcation reciept
+                  tr
+                    td.two-columns
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') Transaction Amount :
+                      table.column
+                        tbody
+                          tr
+                            td $#{recieptDetails.amount}
+                  tr
+                    td.two-columns
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') Transaction Date :
+                      table.column
+                        tbody
+                          tr
+                            td #{recieptDetails.date.toLocaleString()}
+                  tr
+                    td.two-columns
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') Sender:
+                      table.column
+                        tbody
+                          tr
+                            td #{recieptDetails.login}
+                  tr
+                    td.two-columns
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') Beneficaiary Bank
+                      table.column
+                        tbody
+                          tr
+                            td
+                              | #{recieptDetails.bank}
+                  tr
+                    td.two-columns
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') Transaction Status :
+                      table.column
+                        tbody
+                          tr
+                            td #{recieptDetails.status}
