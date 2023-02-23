@@ -41,49 +41,6 @@ export const updateSettings = async (data, type) => {
   }
 };
 
-// CREATING TOUR ENGINE
-export const newWallet = async (coinName, address) => {
-  const url = `/api/v1/coins`;
-
-  try {
-    const res = await axios({
-      method: "POST",
-      url,
-      data: {
-        coinName,
-        address,
-      },
-    });
-
-    if (res.data.status === "success") {
-      location.reload();
-    }
-  } catch (err) {
-    console.log("error", err.response.data.message);
-  }
-};
-
-// UPDATING TOUR ENGINE
-export const updateWallet = async (address, coinId) => {
-  const url = `/api/v1/coins/${coinId}`;
-
-  try {
-    const res = await axios({
-      method: "PATCH",
-      url,
-      data: {
-        address,
-      },
-    });
-
-    if (res.data.status === "success") {
-      location.reload(true);
-    }
-  } catch (err) {
-    console.log("error", err.response.data.message);
-  }
-};
-
 // Update user Engine
 
 export const updateUserData = async (userId, data) => {
@@ -123,7 +80,7 @@ export const deleteClient = async (userId) => {
   }
 };
 
-// // DELETE USER ENGINE
+// // DELETE SELF ENGINE
 // export const deactivateSelf = async () => {
 
 //   const url = `/api/v1/users/deleteme`;

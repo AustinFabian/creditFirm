@@ -26,8 +26,11 @@ export const signup = async (login, email, password, passwordConfirm) => {
     }
   } catch (err) {
     var msg = err.response.data.message;
+    console.log(msg)
     if (msg.includes("email_1 dup key")) {
-      alertUs.textContent = "This Email is already used";
+      alertUs.textContent = "Email is already used";
+    }else if (msg.includes("login_1 dup key")) {
+      alertUs.textContent = "Login is already used";
     } else if (msg.includes("passwords are not the same")) {
       alertUs.textContent = "Passwords do not match";
     } else if (msg.includes("is shorter than the minimum allowed length")) {

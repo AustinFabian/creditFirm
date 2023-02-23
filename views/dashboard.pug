@@ -52,7 +52,8 @@ head
     Nav header start
     ***********************************
   .nav-header
-    .nav-control
+    .nav-control(style="display:flex; align-items: center;")
+      h2.alias(style="margin-top: 10px;") CFirm
       .hamburger
         span.line
         span.line
@@ -102,60 +103,21 @@ head
                     path(fill-rule='evenodd', clip-rule='evenodd', d='M15.8333 11H17.5833C18.5498 11 19.3333 11.7835 19.3333 12.75C19.3333 13.7165 18.5498 14.5 17.5833 14.5H2.41666C1.45016 14.5 0.666656 13.7165 0.666656 12.75C0.666656 11.7835 1.45016 11 2.41666 11H4.16666L4.81798 5.13812C5.11136 2.49763 7.34325 0.5 9.99999 0.5C12.6567 0.5 14.8886 2.49763 15.182 5.13812L15.8333 11Z', fill='#B9A8FF')
                     path(opacity='0.3', d='M12.3333 18C12.3333 16.7114 11.2887 15.6667 9.99999 15.6667C8.71133 15.6667 7.66666 16.7114 7.66666 18C7.66666 19.2887 8.71133 20.3334 9.99999 20.3334C11.2887 20.3334 12.3333 19.2887 12.3333 18Z', fill='#B9A8FF')
                 .dropdown-menu.dropdown-menu-end
-                  #DZ_W_Notification1.widget-media.dz-scroll.p-3(style='height: 380px')
+                  #DZ_W_Notification1.widget-media.dz-scroll.p-3(style='min-height: 50px')
                     ul.timeline
-                      li
-                        .timeline-panel
-                          .media.me-2
-                            img(alt='image', width='50', src='images/avatar/1.jpg')
-                          .media-body
-                            h6.mb-1
-                              a(href='javascript:voiud(0)')
-                                | Dr sultads Send you Photo
-                            small.d-block 29 July 2020 - 02:26 PM
-                      li
-                        .timeline-panel
-                          .media.me-2.media-info KG
-                          .media-body
-                            h6.mb-1
-                              a(href='javascript:voiud(0)') Resport created successfully
-                            small.d-block 29 July 2020 - 02:26 PM
-                      li
-                        .timeline-panel
-                          .media.me-2.media-success
-                            i.fa.fa-home
-                          .media-body
-                            h6.mb-1
-                              a(href='javascript:voiud(0)') Reminder : Treatment Time!
-                            small.d-block 29 July 2020 - 02:26 PM
-                      li
-                        .timeline-panel
-                          .media.me-2
-                            img(alt='image', width='50', src='images/avatar/1.jpg')
-                          .media-body
-                            h6.mb-1
-                              a(href='javascript:voiud(0)') Dr sultads Send you Photo
-                            small.d-block 29 July 2020 - 02:26 PM
-                      li
-                        .timeline-panel
-                          .media.me-2.media-danger KG
-                          .media-body
-                            h6.mb-1
-                              a(href='javascript:voiud(0)')
-                                | Resport created successfully
-                            small.d-block 29 July 2020 - 02:26 PM
-                      li
-                        .timeline-panel
-                          .media.me-2.media-primary
-                            i.fa.fa-home
-                          .media-body
-                            h6.mb-1
-                              a(href='javascript:voiud(0)')
-                                | Reminder : Treatment Time!
-                            small.d-block 29 July 2020 - 02:26 PM
-                  a.all-notification(href='javascript:void(0);')
-                    | See all notifications 
-                    i.ti-arrow-end
+                      each notification in userNotification
+                        li
+                          .timeline-panel
+                            .media.me-2.media-info CF
+                            .media-body
+                              h6.mb-1
+                                a(href='#') #{notification.notification}
+                              small.d-block #{notification.createdAt}
+                      
+                  -if(user.role == "admin")
+                    a.all-notification(href='/all-notifications')
+                      | See all notifications 
+                      i.ti-arrow-end
             a.nav-link.user-profile(href='javascript:void(0);', role='button', data-bs-toggle='dropdown')
               .header-info2.d-flex.align-items-center
                 img(src=`img/users/${user.photo}`)
@@ -200,13 +162,13 @@ head
             li
               a(href='/profile') My profile
             li
-              a(href='/loan-apply') Apply For Loan
+              a(href='#') Apply For Loan
             li
-              a(href='/order-card') Order Credit Card
+              a(href='#') Order Credit Card
             li
-              a(href='/bill') Bill Payment
+              a(href='#') Bill Payment
             li
-              a(href='/loans-bills') Loan / Bills History
+              a(href='#') Loan / Bills History
             li
               a(href='/transaction-history') Transaction History
             li
@@ -224,7 +186,7 @@ head
               li
                 a(href='/users') View All users
               li
-                a(href='/mail-users') Mail Users
+                a(href='#') Mail Users
               
 
   //
@@ -269,7 +231,7 @@ head
                             rect(width='24', height='24', fill='white', transform='translate(26 42.9706) rotate(-135)')
                     div
                       span.fs-14 Expense
-                      h4.fs-5.font-w700 $ #{expense}
+                      h4.fs-5.font-w700 $#{expense}.00
           .col-xl-4
             .row
               .col-xl-12.col-lg-4.col-md-6
@@ -294,7 +256,7 @@ head
                       .content
                         h2.mb-0 Available Balance
                         span.mb-2.fs-14 $ #{user.balance}.00
-                        h5.fs-13 -2% than last month
+                        h5.fs-13 Balance since last transaction
               // --/column--
               // --column--
               .col-xl-12.col-lg-4.col-md-12

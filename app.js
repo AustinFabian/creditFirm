@@ -6,9 +6,8 @@ const cors = require("cors");
 const errorController = require("./controllers/errorController");
 const viewRoute = require("./routes/viewRoute");
 const userRoute = require("./routes/userRoute");
-const coinRoute = require("./routes/coinRoute");
 const transactionRoute = require("./routes/transactionRoute");
-const withdrawRoute = require("./routes/withdrawRoute");
+const notificationRoute = require("./routes/notificationRoute");
 const emailRoute = require("./routes/emailRoute");
 
 const app = express();
@@ -28,9 +27,8 @@ app.set("view engine", "pug");
 app.set("views", __dirname + "/views");
 
 app.use("/api/v1/users", userRoute);
-app.use("/api/v1/coins", coinRoute);
 app.use("/api/v1/transactions", transactionRoute);
-app.use("/api/v1/withdrawals", withdrawRoute);
+app.use("/api/v1/notifications", notificationRoute);
 app.use("/api/v1/emails", emailRoute);
 app.use("/", viewRoute);
 

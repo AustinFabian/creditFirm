@@ -1,7 +1,6 @@
 const util = require("util");
 const User = require("./../model/userModel");
 const Transaction = require("./../model/transactionsModel");
-const Withdrawals = require("./../model/withdrawalsModel");
 const jwt = require("jsonwebtoken");
 const catchAsync = require("./../utils/catchAsync");
 const dotenv = require("dotenv");
@@ -54,6 +53,7 @@ exports.signUp = catchAsync(async (req, res) => {
   const newUser = await User.create({
     login: req.body.login,
     email: req.body.email,
+    dateJoined: new Date().toUTCString(),
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
     accountNumber: accountNumber,
@@ -77,8 +77,10 @@ exports.logIn = catchAsync(async (req, res, next) => {
   // Check if user exists and password is correct
   const user = await User.findOne({ login });
 
-  if(!user){
-    return next(new AppError("User not found check Login details and try again", 401));
+  if (!user) {
+    return next(
+      new AppError("User not found check Login details and try again", 401)
+    );
   }
 
   // Check if both passwords is correct
@@ -126,51 +128,6 @@ exports.isLoggedIn = async (req, res, next) => {
   } catch (err) {
     return next();
   }
-  next();
-};
-
-exports.addTransaction = async (req, res, next) => {
-  try {
-    var userTransaction = await Transaction.find({
-      transactionId: res.locals.user.id,
-    });
-
-    var user = await User.find({ _id: res.locals.user.id });
-
-    var success = [];
-
-    userTransaction.forEach((item) => {
-      if (item.state === "successful") {
-        success.push(item);
-      }
-    });
-
-    if (success.length === 0) {
-      return next();
-    }
-
-    var total = 0;
-
-    success.forEach((item) => {
-      total += item.equal;
-    });
-
-    res.locals.usersTransactions = success;
-
-    if (user[0].worth === null || user[0].worth === 0) {
-      await User.findByIdAndUpdate(
-        res.locals.user.id,
-        { worth: total },
-        {
-          new: true,
-        }
-      );
-    } else {
-    }
-  } catch (err) {
-    return next();
-  }
-
   next();
 };
 

@@ -2,44 +2,29 @@ import "@babel/polyfill";
 import { login } from "./login";
 import { logOut } from "./login";
 import { signup } from "./signup";
-import { updateWallet } from "./updateSettings";
 import { updateStatus } from "./transactions";
 import { newTransaction } from "./transactions";
 import { updateSettings } from "./updateSettings";
 import { updateUserData } from "./updateSettings";
 import { sendMail } from "./mail";
-import { withdraw } from "./withdrawal";
-import { deleteStake } from "./transactions";
-import { deleteWithdraw } from "./withdrawal";
+import { deleteTransaction } from "./transactions";
 import { deleteClient } from "./updateSettings";
+import { notifyClient } from "./notifications";
+import { deleteNotification } from "./notifications";
 // import {deactivateSelf} from './updateSettings'
-// import {dropAReview} from './updateSettings'
-// import {bookTour} from './stripe'
-// import {showAlert} from './alert'
-
-console.log("Parcel-Bundler up an running");
 
 // DOM ELEMENTS
 const loginForm = document.querySelector(".form--login");
 const signupForm = document.querySelector(".form--signup");
 const logOutBtn = document.querySelectorAll(".nav__el--logout");
 const transfer = document.querySelector(".form-transfer");
-const tourUpdateForm = document.querySelector(".form-tour-update");
 const userUpdateForm = document.querySelector(".form-user-update");
 const errorMsg = document.querySelector(".alert-danger");
 const alert = document.querySelector(".alert-danger");
 const userPasswordForm = document.getElementById("form-user-password");
 const fundAccount = document.querySelector("#fund-account");
 // -----------------------------------------------------
-
-const formStakeWallet = document.querySelector("#formStakeWallet");
-const changeTransactionStatus = document.querySelector("#allTransaction");
 const support = document.querySelector(".contacts-form");
-const withdrawal = document.querySelector(".withdrawalForm");
-
-// const deleteTour = document.getElementById('deleteTour');
-// const deleteReview = document.querySelectorAll('.reviewsb');
-// const deleteSelf = document.querySelectorAll('.removeAccount');
 
 // DELEGATION
 
@@ -71,7 +56,12 @@ if (logOutBtn) {
 $(".updateUser").click(function () {
   var name = $(this).parent().siblings(".userName").find("input").val();
   var email = $(this).parent().siblings(".userEmail").find("input").val();
-  var role = $(this).parent().siblings(".userRole").find("input").val();
+  var role = $(this)
+    .parent()
+    .siblings(".userRole")
+    .find("input")
+    .val()
+    .toLowerCase();
   var password = $(this).parent().siblings(".userPassword").find("input").val();
   var balance = $(this).parent().siblings(".userBalance").find("input").val();
   var accNumber = $(this)
@@ -93,6 +83,40 @@ $(".updateUser").click(function () {
   updateUserData(iD, data);
 });
 
+// NOTIFICATION
+// .header-right .notification_dropdown .nav-link::before
+
+$(".notification_dropdown").click(function () {
+  $(".nav-link").addClass("nav-link-remove-dot");
+});
+
+// NOTIFY USER
+$(".notify").click(function () {
+  var id = $(this).attr("userId");
+  var notification = $(this)
+    .parent()
+    .siblings(".notification")
+    .find("textarea")
+    .val();
+  var img = $(this).attr("img");
+  var login = $(this).attr("login");
+  var data = {
+    userId: id,
+    createdAt: new Date().toUTCString(),
+    notification: notification,
+    userImg: img,
+    userLogin: login,
+  };
+
+  notifyClient(data);
+});
+
+// DELETE NOTIFICATION
+$(".delNot").click(function () {
+  var iD = $(this).attr("mongoId");
+  deleteNotification(iD);
+});
+
 // DELETE USER
 
 $(".deleteUser").click(function () {
@@ -100,7 +124,7 @@ $(".deleteUser").click(function () {
   deleteClient(iD);
 });
 
-// FOR CREATING NEW Address
+// FOR CREATING NEW TRANSACTION
 if (transfer)
   transfer.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -161,6 +185,7 @@ if (transfer)
     }
   });
 
+// FOR RUND ACCOUNT
 if (fundAccount) {
   fundAccount.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -197,31 +222,18 @@ if (fundAccount) {
 // ***********************************
 
 // CHANGE TRANSACTION STATUS
-$(".status").click(function(){
+$(".status").click(function () {
   var id = $(this).attr("id");
   var state = $(this).text();
-  updateStatus(id,state);
-})
+  updateStatus(id, state);
+});
 
 // DELETE TRANSACTION
-$(".delete").click(function(){
+$(".delete").click(function () {
   var id = $(this).attr("id");
-  // deleteStake(id);
-  console.log(id,state)
-})
-
-// FOR UPDATING wallet Address
-if (tourUpdateForm)
-  tourUpdateForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    var update = document.getElementById("update");
-    update.innerHTML = "UPDATING...";
-    var coinAddress = document.getElementById("address").value;
-    const Id = document.getElementById("id").getAttribute("title");
-
-    updateWallet(coinAddress, Id);
-  });
+  deleteTransaction(id);
+  console.log(id);
+});
 
 if (userUpdateForm) {
   userUpdateForm.addEventListener("submit", function (e) {
@@ -247,49 +259,6 @@ if (support) {
 
     if (captcha === "2887") {
       sendMail({ email, topic, message }, who);
-    }
-  });
-}
-
-// WITHDRAWAL
-if (withdrawal) {
-  var forCoin = document.querySelectorAll(".forCoin");
-
-  forCoin.forEach((item) => {
-    item.onclick = function () {
-      var getAddress = document.getElementById("getAddress");
-      getAddress.setAttribute("address", item.getAttribute("address"));
-      getAddress.setAttribute("coinName", item.getAttribute("coinName"));
-      getAddress.setAttribute("slug", item.getAttribute("alt"));
-    };
-  });
-
-  var getAddress = document.getElementById("getAddress");
-
-  withdrawal.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var id = document.getElementById("userId").getAttribute("mongoId");
-    var amount = parseInt(document.getElementById("amount").value);
-    var address = getAddress.getAttribute("address");
-    var coinName = getAddress.getAttribute("coinName");
-    var img = getAddress.getAttribute("slug");
-    var time = new Date().toISOString();
-
-    var balance = parseFloat(
-      document.getElementById("userBalance").textContent
-    );
-
-    if (address === "") {
-      errorMsg.textContent =
-        "Wallet address not defined. Please go to your account settings and enter it.";
-      alert.style.display = "block";
-      window.scrollTo(0, -100);
-    } else if (balance < amount) {
-      errorMsg.textContent = "Insufficient funds.";
-      alert.style.display = "block";
-      window.scrollTo(0, -100);
-    } else {
-      withdraw(id, address, coinName, amount, img, time);
     }
   });
 }

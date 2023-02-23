@@ -2,7 +2,7 @@ const catchAsync = require("./../utils/catchAsync");
 const AppError = require("./../utils/AppError");
 const User = require("./../model/userModel");
 const Transactions = require("./../model/transactionsModel");
-const Withdrawals = require("./../model/withdrawalsModel");
+const Notifications = require("./../model/notificationsModel");
 const dotenv = require("dotenv");
 dotenv.config({ path: "./../config.env" });
 
@@ -20,6 +20,7 @@ exports.getSignup = catchAsync(async (req, res, next) => {
 
 exports.getDash = catchAsync(async (req, res, next) => {
   var userTransaction = await Transactions.find({ transactionId: req.user.id });
+  var userNotification = await Notifications.find({ userId: req.user.id });
 
   var total = 0;
 
@@ -37,8 +38,9 @@ exports.getDash = catchAsync(async (req, res, next) => {
 
   res.status(200).render("dashboard", {
     userTransaction,
+    userNotification,
     total,
-    expense
+    expense,
   });
 });
 
@@ -141,31 +143,6 @@ exports.getLoanApply = catchAsync(async (req, res, next) => {
   });
 });
 
-// OPERATION STAKINGS
-exports.operationStaking = catchAsync(async (req, res, next) => {
-  var allTransaction = await Transactions.find();
-
-  var userTransaction = await Transactions.find({ transactionId: req.user.id });
-
-  res.status(200).render("operationStaking", {
-    allTransaction,
-    userTransaction,
-  });
-});
-
-// OPERATION WITHDRAWAL
-
-exports.operationsWithdrawal = catchAsync(async (req, res, next) => {
-  var allWithdrawal = await Withdrawals.find();
-
-  var userWithdrawal = await Withdrawals.find({ transactionId: req.user.id });
-
-  res.status(200).render("operationsWithdrawal", {
-    userWithdrawal,
-    allWithdrawal,
-  });
-});
-
 exports.getAccount = catchAsync(async (req, res, next) => {
   var user = await User.findById(req.user.id);
   res.status(200).render("account", {
@@ -175,7 +152,6 @@ exports.getAccount = catchAsync(async (req, res, next) => {
 
 exports.getUserManager = catchAsync(async (req, res, next) => {
   const users = await User.find();
-  console.log(users);
   res.status(200).render("users", {
     users,
   });
@@ -197,5 +173,14 @@ exports.getUserTransaction = catchAsync(async (req, res, next) => {
   });
   res.status(200).render("userTransactions", {
     transactions,
+  });
+});
+
+exports.getAllNotification = catchAsync(async (req, res, next) => {
+  const notifications = await Notifications.find();
+
+  console.log(notifications)
+  res.status(200).render("all-notification", {
+    notifications
   });
 });

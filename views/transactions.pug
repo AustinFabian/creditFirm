@@ -53,7 +53,8 @@ head
     Nav header start
     ***********************************
   .nav-header
-    .nav-control
+    .nav-control(style="display:flex; align-items: center;")
+      h2.alias(style="margin-top: 10px;") CFirm
       .hamburger
         span.line
         span.line
@@ -100,11 +101,11 @@ head
             li
               a(href='/dashboard') Dashboard
             li
-              a(href='/loan-apply') Apply For Loan
+              a(href='#') Apply For Loan
             li
-              a(href='/order-card') Order Credit Card
+              a(href='#') Order Credit Card
             li
-              a(href='/bill') Bill payment
+              a(href='#') Bill payment
             li
               a(href='/transaction-history') Transaction History
             li
@@ -202,6 +203,8 @@ head
                                       |declined
                                     a.dropdown-item.status(style='cursor:pointer;', id=`${transaction.id}`)
                                       |successful
+                                    a.dropdown-item.delete(style='cursor:pointer;', id=`${transaction.id}`)
+                                      |delete
                       -if(user.role == "user")
                         each transaction in allTransaction
                           -if(transaction.userName == user.login)
@@ -289,7 +292,9 @@ head
                                     a.dropdown-item.status(style='cursor:pointer;', id=`${deposit.id}`)
                                       |declined
                                     a.dropdown-item.status(style='cursor:pointer;', id=`${deposit.id}`)
-                                      |successful  
+                                      |successful 
+                                    a.dropdown-item.delete(style='cursor:pointer;', id=`${deposit.id}`)
+                                      |delete 
 
                     -if(user.role == "user")
                       each deposit in deposits
@@ -380,6 +385,8 @@ head
                                       |declined
                                     a.dropdown-item.status(style='cursor:pointer;', id=`${transfer.id}`)
                                       |successful  
+                                    a.dropdown-item.delete(style='cursor:pointer;', id=`${transfer.id}`)
+                                      |delete
                     -if(user.role == "user")
                       each transfer in transfers
                         -if(user.login == transfer.userName)
@@ -502,6 +509,8 @@ head
                                       |declined
                                     a.dropdown-item.status(style='cursor:pointer;', id=`${airtime.id}`)
                                       |successful    
+                                    a.dropdown-item.delete(style='cursor:pointer;', id=`${airtime.id}`)
+                                      |delete
                     -if(user.role == "user")
                       each airtime in airtimes
                         -if(user.login == airtime.userName)
@@ -525,20 +534,7 @@ head
                                 span.me-2
                                 |                               #{airtime.type} 
                               td
-                                span #{airtime.state} 
-                              -if(user.role == "admin")
-                                td
-                                  .dropdown
-                                    a.btn-link.btn.sharp.tp-btn-light.btn-primary.pill(href='javascript:void(0);', data-bs-toggle='dropdown', aria-expanded='false')
-                                      svg(width='20', height='20', viewbox='0 0 20 20', fill='none', xmlns='http://www.w3.org/2000/svg')
-                                        path(d='M8.33319 9.99985C8.33319 10.9203 9.07938 11.6665 9.99986 11.6665C10.9203 11.6665 11.6665 10.9203 11.6665 9.99986C11.6665 9.07938 10.9203 8.33319 9.99986 8.33319C9.07938 8.33319 8.33319 9.07938 8.33319 9.99985Z', fill='#ffffff')
-                                        path(d='M8.33319 3.33329C8.33319 4.25376 9.07938 4.99995 9.99986 4.99995C10.9203 4.99995 11.6665 4.25376 11.6665 3.33329C11.6665 2.41282 10.9203 1.66663 9.99986 1.66663C9.07938 1.66663 8.33319 2.41282 8.33319 3.33329Z', fill='#ffffff')
-                                        path(d='M8.33319 16.6667C8.33319 17.5871 9.07938 18.3333 9.99986 18.3333C10.9203 18.3333 11.6665 17.5871 11.6665 16.6667C11.6665 15.7462 10.9203 15 9.99986 15C9.07938 15 8.33319 15.7462 8.33319 16.6667Z', fill='#ffffff')
-                                    .dropdown-menu.dropdown-menu-end
-                                      a.dropdown-item(style='cursor:pointer;')
-                                        |                                     declined
-                                      a.dropdown-item(style='cursor:pointer;')
-                                        |                                     successful  
+                                span #{airtime.state}  
 // Required vendors
 
 script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')

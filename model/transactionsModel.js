@@ -22,8 +22,8 @@ const transactionSchema = new mongoose.Schema({
     type: String,
   },
   date: {
-    type: Date,
-    default: new Date(),
+    type: String,
+    default: new Date().toUTCString(),
   },
   type: {
     type: String,

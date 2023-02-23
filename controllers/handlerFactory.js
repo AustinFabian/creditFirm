@@ -1,7 +1,4 @@
 const catchAsync = require('./../utils/catchAsync');
-const User = require("./../model/userModel");
-const Transactions = require("./../model/transactionsModel");
-const Withdrawals = require("./../model/withdrawalsModel");
 const AppError = require('./../utils/AppError');
 
 const APIFeatures = require('./../utils/APIfeatures');
@@ -60,8 +57,6 @@ exports.updateOne = Model =>
 exports.createOne = Model =>
   catchAsync(async (req, res, next) => {
     const doc = await Model.create(req.body);
-
-    console.log(req.body)
 
     res.status(201).json({
       status: 'success',

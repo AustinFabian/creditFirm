@@ -6,6 +6,8 @@ const validator = require("validator");
 const userSchema = new mongoose.Schema({
   login: {
     type: String,
+    unique: true,
+    lowercase: true,
     required: [true, "Please fill a name"],
   },
   email: {
@@ -17,7 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["user", "admin", "guide", "lead-guide"],
+    enum: ["user", "admin"],
     default: "user",
   },
   password: {
@@ -45,11 +47,11 @@ const userSchema = new mongoose.Schema({
   },
   balance: {
     type: Number,
-    default: 0
+    default: 0,
   },
   dateJoined: {
-    type: Date,
-    default: new Date(),
+    type: String,
+    default: new Date().toUTCString(),
   },
   passwordChangedAt: Date,
   passwordResetToken: String,
@@ -58,7 +60,7 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
     select: false,
-  },
+  }
 });
 
 const User = mongoose.model("User", userSchema);

@@ -35,4 +35,12 @@ router.get(
   viewController.getLoanApply
 );
 
+
+router.get(
+  "/all-notifications",
+  authController.isLoggedIn,
+  authController.restrictTo("admin"),
+  viewController.getAllNotification
+);
+
 module.exports = router;

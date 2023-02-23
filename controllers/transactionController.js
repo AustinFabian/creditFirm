@@ -30,6 +30,7 @@ exports.createTransaction = catchAsync(async (req, res, next) => {
   const doc = await Transactions.create({
     transactionId: req.body.transactionId,
     type: req.body.type,
+    date: new Date().toUTCString(),
     userName: req.body.userName,
     userImg: req.body.userImg,
     userEmail: req.body.userEmail,
@@ -41,7 +42,7 @@ exports.createTransaction = catchAsync(async (req, res, next) => {
 
   var client = await User.findOne({ _id: req.body.transactionId });
 
-  var clientForEmail = {}
+  var clientForEmail = {};
 
   clientForEmail.transactionAmount = req.body.amount;
   clientForEmail.sentTo = req.body.bank;
@@ -50,8 +51,6 @@ exports.createTransaction = catchAsync(async (req, res, next) => {
   clientForEmail.TransactionStatus = doc.state;
   clientForEmail.userEmail = client.email;
   clientForEmail.transactionType = req.body.type;
-
-  console.log(clientForEmail)
 
   await new UserEmail(clientForEmail).sendReciept();
 

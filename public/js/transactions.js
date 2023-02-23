@@ -69,10 +69,10 @@ export const updateStatus = async (Id, state) => {
 
 
 
-// DELETING StakeTransaction ENGINE
-export const deleteStake = async (Id) => {
+// DELETING TRANSACTION ENGINE
+export const deleteTransaction = async (Id) => {
 
-  const url = `/api/v1/stakes/${Id}`;
+  const url = `/api/v1/transactions/${Id}`;
 
   try {
     const res = await axios({
