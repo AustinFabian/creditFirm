@@ -178,8 +178,6 @@ exports.getUserTransaction = catchAsync(async (req, res, next) => {
 
 exports.getAllNotification = catchAsync(async (req, res, next) => {
   const notifications = await Notifications.find();
-
-  console.log(notifications)
   res.status(200).render("all-notification", {
     notifications
   });
