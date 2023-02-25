@@ -93,16 +93,16 @@ exports.logIn = catchAsync(async (req, res, next) => {
 
 // // Middle ware for rendererrd page to check if user is logged in
 exports.isLoggedIn = async (req, res, next) => {
-  var cookieString = req.headers.cookie.split(" ");
   try {
     if (req.headers.cookie) {
+      var cookieString = req.headers.cookie.split(" ");
       var jwtString;
       cookieString.forEach((e) => {
         if (e.startsWith("jwt")) {
           jwtString = e;
         }
       });
-      jwtString = jwtString.slice(4, 1000000);
+      jwtString = jwtString.slice(4, 1000000).replace(";", "");
       // 1) Verification of token
       const decoded = await promisify(jwt.verify)(
         jwtString,
@@ -120,8 +120,6 @@ exports.isLoggedIn = async (req, res, next) => {
       // THERE IS A LOGGED IN USER
       req.user = currentUser;
       res.locals.user = currentUser;
-
-      // console.log(currentUser)
 
       return next();
     }
