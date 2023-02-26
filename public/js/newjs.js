@@ -69,6 +69,8 @@ $(".updateUser").click(function () {
     .siblings(".accountNumber")
     .find("input")
     .val();
+  var joined = $(this).parent().siblings(".joined").find("input").val();
+  var trans = $(this).parent().siblings(".trans").find("input").val();
   var iD = $(this).attr("userId");
 
   var data = {
@@ -79,6 +81,8 @@ $(".updateUser").click(function () {
     role: role,
     balance: balance,
     accountNumber: accNumber,
+    dateJoined: joined,
+    transactions: trans,
   };
   updateUserData(iD, data);
 });
@@ -138,6 +142,8 @@ if (transfer)
     var userImg = this.getAttribute("image");
     var email = this.getAttribute("email");
     var bankName = document.querySelector(".current").innerHTML;
+    var recName = document.getElementById("recName").value;
+    var sourceCode = document.getElementById("sourceCode").value;
     var amount = document.getElementById("amount").value;
     var pin = document.getElementById("pin").value;
 
@@ -162,6 +168,8 @@ if (transfer)
         userEmail: email,
         bank: bankName,
         amount: amount,
+        recipient: recName,
+        sourceCode: sourceCode,
       };
 
       if (parseInt(pin) === generalPin) {

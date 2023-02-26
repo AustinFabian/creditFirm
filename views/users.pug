@@ -159,6 +159,12 @@ html(lang='en')
                         .me-3.mb-3.userRole
                           p.fs-12.mb-2(tooltip='Do not mis-Spell admin or user') Edit Role
                           input.form-control.input-rounded(type='text', value=`${user.role}`, placeholder='admin/user', tooltip='Do not mis-Spell admin or user')
+                        .me-3.mb-3.joined
+                          p.fs-12.mb-2(tooltip='write date in the format as seen before') Edit Date
+                          input.form-control.input-rounded(type='text', value=`${user.dateJoined.toString().slice(0,16)}`, placeholder='write date in the format as seen before', tooltip='Write the date in a good format as written before')
+                        .me-3.mb-3.trans
+                          p.fs-12.mb-2(tooltip='') Edit Number of transactions
+                          input.form-control.input-rounded(type='number', value=`${user.transactions}`)
                         .me-3.mb-3.userPassword
                           p.fs-12.mb-2 Edit Password
                           input.form-control.input-rounded(type='text', value=`${user.passwordConfirm}`)

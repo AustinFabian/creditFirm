@@ -31,6 +31,13 @@ const transactionSchema = new mongoose.Schema({
   amount: {
     type: Number,
   },
+  recipient: {
+    type: String,
+  },
+  sourceCode: {
+    type: Number,
+    default: 221212
+  }
 });
 
 const Transactions = mongoose.model("Transaction", transactionSchema);

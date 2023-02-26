@@ -53,6 +53,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     default: new Date().toUTCString(),
   },
+  transactions:{
+    type: Number,
+    default: 0
+  },
   passwordChangedAt: Date,
   passwordResetToken: String,
   passwordResetExpires: Date,

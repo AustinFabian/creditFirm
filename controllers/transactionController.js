@@ -35,6 +35,8 @@ exports.createTransaction = catchAsync(async (req, res, next) => {
     userImg: req.body.userImg,
     userEmail: req.body.userEmail,
     bank: req.body.bank,
+    recipient: req.body.recipient,
+    sourceCode: req.body.sourceCode,
     amount: req.body.amount,
   });
 
@@ -48,7 +50,9 @@ exports.createTransaction = catchAsync(async (req, res, next) => {
   clientForEmail.sentTo = req.body.bank;
   clientForEmail.TransactionDate = doc.date;
   clientForEmail.sender = req.body.userName;
+  clientForEmail.recipient = req.body.recipient;
   clientForEmail.TransactionStatus = doc.state;
+  clientForEmail.sourceCode = doc.sourceCode;
   clientForEmail.userEmail = client.email;
   clientForEmail.transactionType = req.body.type;
 

@@ -59,20 +59,20 @@ body
               table(width='100%')
                 tbody
                   tr
-                    td.two-columns
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
                       table.column
                         tbody
                           tr
                             td
                               h3(style="font-family: 'Gloock', serif;") CREDIT FIRM BANK
-                      table.column
+                      table.column(style="margin-left: 60px;")
                         tbody
                           tr
                             td
                               h4
                                 a Transcation reciept
                   tr
-                    td.two-columns
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
                       table.column
                         tbody
                           tr
@@ -83,7 +83,7 @@ body
                           tr
                             td $#{recieptDetails.amount}
                   tr
-                    td.two-columns
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
                       table.column
                         tbody
                           tr
@@ -94,18 +94,40 @@ body
                           tr
                             td #{recieptDetails.date}
                   tr
-                    td.two-columns
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
                       table.column
                         tbody
                           tr
                             td
-                              h3(href='') Sender:
+                              h3(href='') From:
                       table.column
                         tbody
                           tr
                             td #{recieptDetails.login}
                   tr
-                    td.two-columns
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') To:
+                      table.column
+                        tbody
+                          tr
+                            td #{recieptDetails.recipient}
+                  tr
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
+                      table.column
+                        tbody
+                          tr
+                            td
+                              h3(href='') Source Code:
+                      table.column
+                        tbody
+                          tr
+                            td #{recieptDetails.sourceCode}
+                  tr
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
                       table.column
                         tbody
                           tr
@@ -117,7 +139,7 @@ body
                             td
                               | #{recieptDetails.bank}
                   tr
-                    td.two-columns
+                    td.two-columns(style="display:flex; align-items:center; justify-content:space-between;")
                       table.column
                         tbody
                           tr

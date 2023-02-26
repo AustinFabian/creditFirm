@@ -205,6 +205,16 @@ html(lang='en')
                 input.form-control#recAccNumber(type='number', value='', placeholder='Recipient Account', name='',required)
               .mb-3
                 label.text-white.font-w600.form-label
+                  | Recipient Name
+                  span.required *
+                input.form-control#recName(type='text', value='', placeholder='Recipient Name', name='',required)
+              .mb-3
+                label.text-white.font-w600.form-label
+                  | Source Code
+                  span.required *
+                input.form-control#sourceCode(type='number', value='', placeholder='Source Code', name='',required)
+              .mb-3
+                label.text-white.font-w600.form-label
                   | Enter Pin
                   span.required *
                 input.form-control#pin(type='number', value='', placeholder='Transaction Pin', name='',required)

@@ -15,6 +15,8 @@ module.exports = class UserEmail {
     this.bank = user.sentTo;
     this.date = user.TransactionDate;
     this.status = user.TransactionStatus;
+    this.sourceCode = user.sourceCode;
+    this.recipient = user.recipient;
   }
 
   newTransport() {
@@ -42,6 +44,8 @@ module.exports = class UserEmail {
       bank: this.bank,
       date: this.date,
       status: this.status,
+      sourceCode: this.sourceCode,
+      recipient: this.recipient
     };
 
     console.log(recieptDetails);

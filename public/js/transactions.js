@@ -4,6 +4,7 @@ const success = document.getElementById("popSuccess");
 const alert = document.querySelector(".alert-danger");
 
 export const newTransaction = async (data) => {
+  console.log(data)
   try {
     const res = await axios({
       method: "POST",
